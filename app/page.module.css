@@ -67,7 +67,6 @@
   height: 48px;
   padding: 0 20px;
   border: none;
-  border: 1px solid transparent;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
   display: flex;
@@ -125,8 +124,7 @@ a.secondary {
 
 @media (max-width: 600px) {
   .page {
-    padding: 32px;
-    padding-bottom: 80px;
+    padding: 32px 32px 80px;
   }
 
   .main {
