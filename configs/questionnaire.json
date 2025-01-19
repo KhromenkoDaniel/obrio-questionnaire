@@ -1,0 +1,39 @@
+{
+  "id": "survey1",
+  "title": "Personal Preferences Survey",
+  "questions": [
+    {
+      "id": "q1",
+      "screenType": "singleChoice",
+      "question": "Select your gender:",
+      "options": ["Female", "Male"],
+      "next": {
+        "Female": "q2",
+        "Male": "q2"
+      },
+      "theme": "default"
+    },
+    {
+      "id": "q2",
+      "screenType": "singleChoice",
+      "question": "Tell us about your relationship status:",
+      "options": ["Single", "In a relationship"],
+      "next": {
+        "Single": "q3",
+        "In a relationship": "q3"
+      },
+      "theme": "default"
+    },
+    {
+      "id": "q3",
+      "screenType": "info",
+      "question": "So how does it work?",
+      "subtitle": "We analyze hundreds of data points to create your unique astrological blueprint. This is combined with AI to tailor-make your astrological insights, based on your answers. We’re going to change your relationship with astrology.",
+      "options": ["Next"],
+      "next": {
+        "Next": "q4"
+      },
+      "theme": "gradient"
+    }
+  ]
+}
