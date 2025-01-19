@@ -71,7 +71,9 @@
     "prettier/prettier": [
       "error",
       {
-        "bracketSameLine": true
+        "arrowParens": "always",
+        "trailingComma": "all",
+        "printWidth": 80
       }
     ]
   }
