@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 
 import '@/styles/globals.scss';
+
 import Header from '@/components/Header';
+import StoreProvider from '@/lib/StoreProvider';
 
 const openSans = Open_Sans({
   weight: '700',
@@ -25,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme={isGradientTheme ? 'gradient' : 'default'}>
       <body className={` ${openSans.variable}`}>
-        <Header isGradientTheme={isGradientTheme} />
-        {children}
+        <StoreProvider>
+          <Header isGradientTheme={isGradientTheme} />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );

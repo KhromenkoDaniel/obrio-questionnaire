@@ -1,3 +1,9 @@
+export type Answer = {
+  id: number;
+  name: string;
+  reference: string | null;
+};
+
 export type Question = {
   id: string;
   screenType:
@@ -8,9 +14,9 @@ export type Question = {
     | 'info';
   question: string;
   subtitle?: string;
-  options?: string[];
-  next?: Record<string, string>;
+  answers?: Answer[];
   theme?: string;
+  nextScreenId?: string;
 };
 
 export type Questionnaire = {
@@ -21,4 +27,9 @@ export type Questionnaire = {
 
 export type Params = {
   questionId: string;
+};
+
+export type QuestionRendererProps = {
+  question: Question;
+  onNextQuestion: (answer: Answer) => void;
 };
