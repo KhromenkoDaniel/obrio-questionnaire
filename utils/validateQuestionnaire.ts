@@ -3,6 +3,12 @@ import { z } from 'zod';
 import questionnaireData from '@/configs/questionnaire.json';
 import { Questionnaire } from '@/types/questionnaire';
 
+const answerSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  reference: z.string().nullable(),
+});
+
 const questionSchema = z.object({
   id: z.string(),
   screenType: z.enum([
@@ -14,9 +20,9 @@ const questionSchema = z.object({
   ]),
   question: z.string(),
   subtitle: z.string().optional(),
-  options: z.array(z.string()).optional(),
-  next: z.record(z.string()).optional(),
+  answers: z.array(answerSchema).optional(),
   theme: z.string().optional(),
+  nextScreenId: z.string().optional(),
 });
 
 const questionnaireSchema = z.object({
