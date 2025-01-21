@@ -22,6 +22,7 @@ function Header({ isGradientTheme }: HeaderProps) {
           alt="logo"
           width={24}
           height={24}
+          priority
         />
       </div>
     </header>

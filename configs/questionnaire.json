@@ -75,7 +75,15 @@
     {
       "id": "q4a",
       "screenType": "singleChoice",
-      "question": "Single {gender} {who have children (if have children)} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "question": "Single {Gender} {who_have_children} need a slightly different approach to improve their relationship. Which statement best describes you?",
+      "placeholders": {
+        "Gender": "q2",
+        "who_have_children": {
+          "condition": 5,
+          "valueIfTrue": "who have children",
+          "valueIfFalse": ""
+        }
+      },
       "answers": [
         {
           "id": 9,
@@ -98,7 +106,15 @@
     {
       "id": "q4b",
       "screenType": "singleChoice",
-      "question": "{Gender} {who have children (if have children)} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "question": "{Gender} {who_have_children} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
+      "placeholders": {
+        "Gender": "q2",
+        "who_have_children": {
+          "condition": 5,
+          "valueIfTrue": "who have children",
+          "valueIfFalse": ""
+        }
+      },
       "answers": [
         {
           "id": 12,

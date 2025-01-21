@@ -30,12 +30,14 @@ const surveySlice = createSlice({
         state.responses.push({ id, name, reference });
       }
 
+      state.dynamicValues[`response_id_${id}`] = name;
+
       if (typeof window !== 'undefined') {
         localStorage.setItem('responses', JSON.stringify(state.responses));
-      }
-
-      if (name === 'Male' || name === 'Female') {
-        state.dynamicValues['Gender'] = name;
+        localStorage.setItem(
+          'dynamicValues',
+          JSON.stringify(state.dynamicValues),
+        );
       }
     },
     clearSurvey: (state) => {
