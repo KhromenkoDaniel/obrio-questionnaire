@@ -304,88 +304,88 @@
     },
     {
       "id": "q9",
-      "screenType": "multiChoice",
+      "screenType": "singleChoice",
       "question": "Where did you hear about us?",
       "answers": [
         {
           "id": 39,
           "name": "Poster or Billboard",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 40,
           "name": "Friend or Family",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 41,
           "name": "Instagram",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 42,
           "name": "Direct Mail or Package Insert",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 43,
           "name": "Online TV or Streaming TV",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 44,
           "name": "TV",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 45,
           "name": "Radio",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 46,
           "name": "Search Engine (Google, Bing, etc.)",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 47,
           "name": "Newspaper or Magazine",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 48,
           "name": "Facebook",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 49,
           "name": "Blog Post or Website Review",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 50,
           "name": "Podcast",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 51,
           "name": "Influencer",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 52,
           "name": "Youtube",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 53,
           "name": "Pinterest",
-          "reference": null
+          "reference": "/result"
         },
         {
           "id": 54,
           "name": "Other",
-          "reference": null
+          "reference": "/result"
         }
       ],
       "theme": "default"
