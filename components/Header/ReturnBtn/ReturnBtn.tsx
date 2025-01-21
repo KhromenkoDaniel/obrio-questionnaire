@@ -2,15 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 
+import { selectIsGradientTheme } from '@/lib/features/theme/themeSlice';
+import { useAppSelector } from '@/lib/hooks';
 import ArrowLeft from '@/public/ArrowLeft';
 import styles from '@/styles/components/Header.module.scss';
 
-type HeaderProps = {
-  isGradientTheme: boolean;
-};
-
-function ReturnBtn({ isGradientTheme }: HeaderProps) {
+function ReturnBtn() {
   const router = useRouter();
+  const isGradientTheme = useAppSelector(selectIsGradientTheme);
 
   return (
     <button
@@ -18,7 +17,7 @@ function ReturnBtn({ isGradientTheme }: HeaderProps) {
       aria-label="Go to the previous question"
       onClick={() => router.back()}
     >
-      <ArrowLeft color={isGradientTheme ? 'white' : '#1A1A1A'} />
+      <ArrowLeft color={isGradientTheme ? '#1A1A1A' : 'white'} />
     </button>
   );
 }

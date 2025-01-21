@@ -23,12 +23,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isGradientTheme = false;
   return (
-    <html lang="en" data-theme={isGradientTheme ? 'gradient' : 'default'}>
+    <html lang="en">
       <body className={` ${openSans.variable}`}>
         <StoreProvider>
-          <Header isGradientTheme={isGradientTheme} />
+          <Header />
           {children}
         </StoreProvider>
       </body>

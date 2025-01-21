@@ -14,11 +14,7 @@ export const replacePlaceholders = (
     }
 
     if (typeof placeholder === 'string') {
-      const value = responses.find(
-        (res) => res.reference === placeholder,
-      )?.name;
-      console.log(value, 'value');
-      return value;
+      return responses.find((res) => res.reference === placeholder)?.name;
     }
 
     if (typeof placeholder === 'object' && placeholder.condition) {
