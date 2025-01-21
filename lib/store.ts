@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import surveyReducer from '@/lib/features/survey/surveySlice';
+import themeReducer from '@/lib/features/theme/themeSlice';
 
 type PreloadedState = {
   survey: ReturnType<typeof surveyReducer>;
@@ -30,6 +31,7 @@ const preloadedState = loadState();
 export const store = configureStore({
   reducer: {
     survey: surveyReducer,
+    theme: themeReducer,
   },
   preloadedState,
 });
