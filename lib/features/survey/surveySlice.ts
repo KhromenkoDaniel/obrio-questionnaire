@@ -8,12 +8,10 @@ type Response = {
 
 type SurveyState = {
   responses: Response[];
-  dynamicValues: Record<string, string>;
 };
 
 const initialState: SurveyState = {
   responses: [],
-  dynamicValues: {},
 };
 
 const surveySlice = createSlice({
@@ -30,14 +28,8 @@ const surveySlice = createSlice({
         state.responses.push({ id, name, reference });
       }
 
-      state.dynamicValues[`response_id_${id}`] = name;
-
       if (typeof window !== 'undefined') {
         localStorage.setItem('responses', JSON.stringify(state.responses));
-        localStorage.setItem(
-          'dynamicValues',
-          JSON.stringify(state.dynamicValues),
-        );
       }
     },
     clearSurvey: (state) => {

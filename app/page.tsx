@@ -17,8 +17,11 @@ export default function Home() {
 
     if (responses.length > 0) {
       const lastResponse = responses.at(-1);
-      if (lastResponse?.reference) {
-        router.replace(`/${lastResponse.reference}`);
+
+      if (lastResponse?.reference === '/result') {
+        router.replace('/congradulations');
+      } else if (lastResponse?.reference) {
+        router.replace(lastResponse.reference);
       } else {
         console.warn(
           'No valid reference found in responses. Redirecting to /q1.',
