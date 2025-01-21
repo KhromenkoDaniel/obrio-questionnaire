@@ -13,6 +13,7 @@ export type Question = {
     | 'dateInput'
     | 'info';
   question: string;
+  placeholders?: PlaceholderConfig;
   subtitle?: string;
   answers?: Response[];
   theme?: string;
@@ -36,4 +37,14 @@ export type SingleChoiceQuestionProps = {
 export type InformationalScreenProps = {
   question: Question;
   referenceID?: string | null;
+};
+
+export type PlaceholderConfig = {
+  [key: string]:
+    | string
+    | {
+        condition: string;
+        valueIfTrue: string;
+        valueIfFalse: string;
+      };
 };
