@@ -3,14 +3,18 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { selectResponses } from '@/lib/features/survey/surveySelectors';
-import { useAppSelector } from '@/lib/hooks';
+import { Response } from '@/types/questionnaire';
+import { loadStateFromLocalStorage } from '@/utils/loadStateFromLocalStorage';
 
 export default function Home() {
   const router = useRouter();
-  const responses = useAppSelector(selectResponses);
 
   useEffect(() => {
+    const responses: Response[] =
+      typeof window !== 'undefined'
+        ? loadStateFromLocalStorage<Response[]>('responses') || []
+        : [];
+
     if (responses.length > 0) {
       const lastResponse = responses.at(-1);
       if (lastResponse?.reference) {
@@ -24,7 +28,7 @@ export default function Home() {
     } else {
       router.replace('/q1');
     }
-  }, [responses, router]);
+  }, [router]);
 
   return null;
 }
