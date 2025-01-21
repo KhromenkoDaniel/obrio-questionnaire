@@ -2,20 +2,8 @@
 @use './mixins' as *;
 
 :root {
-  --background: #ffe4e6;
   --foreground: #171717;
   @include disable-selection;
-}
-
-[data-theme='gradient'] {
-  --background: linear-gradient(
-                  -184deg,
-                  #141333 0%,
-                  #202261 13.3%,
-                  #543c97 49.21%,
-                  #6939a1 74.4%
-  );
-  --foreground: #ffffff;
 }
 
 html,
@@ -27,7 +15,6 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

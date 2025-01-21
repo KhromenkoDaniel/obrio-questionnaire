@@ -24,16 +24,19 @@ function SingleChoiceQuestion({ question }: SingleChoiceQuestionProps) {
   return (
     <>
       <h1 className={styles.title}>{processedQuestion}</h1>
-      {question.answers?.map((answer) => (
-        <Link
-          href={`${question.nextScreenId || answer.reference}`}
-          key={answer.id}
-          className={styles.button}
-          onClick={() => handleSingleChoiceResponse(answer)}
-        >
-          <span>{answer.name}</span>
-        </Link>
-      ))}
+      <p className={styles.subtitle}>{question.subtitle}</p>
+      <div className={styles.answersList}>
+        {question.answers?.map((answer) => (
+          <Link
+            href={`${question.nextScreenId || answer.reference}`}
+            key={answer.id}
+            className={styles.button}
+            onClick={() => handleSingleChoiceResponse(answer)}
+          >
+            <span>{answer.name}</span>
+          </Link>
+        ))}
+      </div>
     </>
   );
 }

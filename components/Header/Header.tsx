@@ -1,29 +1,13 @@
-import Image from 'next/image';
-
-import ArrowLeft from '@/public/ArrowLeft';
+import LogoImg from '@/components/Header/LogoImg';
+import ReturnBtn from '@/components/Header/ReturnBtn';
 import styles from '@/styles/components/Header.module.scss';
 
-type HeaderProps = {
-  isGradientTheme: boolean;
-};
-
-function Header({ isGradientTheme }: HeaderProps) {
+function Header() {
   return (
     <header className={styles.header}>
-      <button
-        className={styles.backButton}
-        aria-label="Go to the previous question"
-      >
-        <ArrowLeft color={isGradientTheme ? 'white' : '#1A1A1A'} />
-      </button>
-      <div className={styles.logo}>
-        <Image
-          src={isGradientTheme ? '/logo_white.png' : '/logo_black.png'}
-          alt="logo"
-          width={24}
-          height={24}
-          priority
-        />
+      <div className={styles.headerContent}>
+        <ReturnBtn />
+        <LogoImg />
       </div>
     </header>
   );

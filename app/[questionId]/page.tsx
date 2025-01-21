@@ -1,6 +1,5 @@
-import ScreenType from '@/components/ScreenTypes/ScreenType';
+import ScreenType from '@/components/ScreenTypes';
 import questionnaireData from '@/configs/questionnaire.json';
-import styles from '@/styles/pages/Question.module.scss';
 import { Params, Question } from '@/types/questionnaire';
 
 export default function ScreenTypePage({ params }: { params: Params }) {
@@ -12,13 +11,7 @@ export default function ScreenTypePage({ params }: { params: Params }) {
     return <div>Question not found</div>;
   }
 
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <ScreenType question={question} />
-      </div>
-    </div>
-  );
+  return <ScreenType question={question} />;
 }
 
 export async function generateStaticParams() {
