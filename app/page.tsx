@@ -3,33 +3,21 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-import { Response } from '@/types/questionnaire';
-import { loadStateFromLocalStorage } from '@/utils/loadStateFromLocalStorage';
+import questionnaireData from '@/configs/questionnaire.json';
 
 export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const responses: Response[] =
-      typeof window !== 'undefined'
-        ? loadStateFromLocalStorage<Response[]>('responses') || []
-        : [];
-
-    if (responses.length > 0) {
-      const lastResponse = responses.at(-1);
-
-      if (lastResponse?.reference === '/result') {
-        router.replace('/congradulations');
-      } else if (lastResponse?.reference) {
-        router.replace(lastResponse.reference);
-      } else {
-        console.warn(
-          'No valid reference found in responses. Redirecting to /q1.',
-        );
-        router.replace('/q1');
-      }
+    const firstQuestionId = questionnaireData.questions?.[0]?.id;
+    console.log(
+      questionnaireData.questions?.[0]?.id,
+      'questionnaireData.questions?.[0]?.id',
+    );
+    if (firstQuestionId) {
+      router.push(`/${firstQuestionId}`);
     } else {
-      router.replace('/q1');
+      console.error('No questions found in the configuration.');
     }
   }, [router]);
 

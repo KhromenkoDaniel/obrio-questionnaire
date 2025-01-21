@@ -10,7 +10,11 @@ import styles from '@/styles/components/Header.module.scss';
 function ReturnBtn() {
   const router = useRouter();
   const isGradientTheme = useAppSelector(selectIsGradientTheme);
+  const responses = useAppSelector((state) => state.survey.responses);
 
+  if (responses.length === 0) {
+    return null;
+  }
   return (
     <button
       className={styles.backButton}

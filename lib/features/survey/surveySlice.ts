@@ -27,15 +27,9 @@ const surveySlice = createSlice({
       } else {
         state.responses.push({ id, name, reference });
       }
-
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('responses', JSON.stringify(state.responses));
-      }
     },
     clearSurvey: (state) => {
-      if (typeof window !== 'undefined') {
-        localStorage.removeItem('responses');
-      }
+      state.responses = [];
       return initialState;
     },
   },
