@@ -1,0 +1,39 @@
+@use 'variables';
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == variables.$breakpoint-desktop {
+	@media (min-width: #{variables.$breakpoint-desktop}) {
+	  @content;
+	}
+  } @else if $breakpoint == variables.$breakpoint-tablet {
+	@media (min-width: #{variables.$breakpoint-tablet}) and (max-width: #{variables.$breakpoint-desktop - 1}) {
+	  @content;
+	}
+  } @else if $breakpoint == variables.$breakpoint-mobile {
+	@media (min-width: #{variables.$breakpoint-mobile}) and (max-width: #{variables.$breakpoint-tablet - 1}) {
+	  @content;
+	}
+  }
+}
+
+@mixin responsive-position($positions...) {
+  @each $position in $positions {
+	@if map-has-key($position, breakpoint) and map-has-key($position, value) {
+	  $breakpoint: map-get($position, breakpoint);
+	  $value: map-get($position, value);
+	  
+	  @include respond-to($breakpoint) {
+		left: $value;
+	  }
+	}
+  }
+}
+
+@mixin disable-selection {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Safari */
+  -khtml-user-select: none;    /* Konqueror HTML */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently supported by Chrome and Opera */
+}

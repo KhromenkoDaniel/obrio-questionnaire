@@ -1,0 +1,30 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px;
+  background-color: transparent;
+  position: relative;
+}
+
+.logo {
+  font-weight: bold;
+  color: #333;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  position: absolute;
+  left: 160px;
+  
+  @include responsive-position(
+                  (breakpoint: $breakpoint-tablet, value: 80px),
+                  (breakpoint: $breakpoint-mobile, value: 16px)
+  );
+}
