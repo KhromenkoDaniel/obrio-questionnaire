@@ -1,4 +1,4 @@
-export type Answer = {
+export type Response = {
   id: number;
   name: string;
   reference: string | null;
@@ -14,7 +14,7 @@ export type Question = {
     | 'info';
   question: string;
   subtitle?: string;
-  answers?: Answer[];
+  answers?: Response[];
   theme?: string;
   nextScreenId?: string;
 };
@@ -31,7 +31,6 @@ export type Params = {
 
 export type SingleChoiceQuestionProps = {
   question: Question;
-  onNextQuestion: (answer: Answer) => void;
 };
 
 export type InformationalScreenProps = {

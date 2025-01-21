@@ -1,62 +1,28 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-
-import InformationalScreen from '@/components/ScreenTypes/InformationalScreen';
-import SingleChoiceQuestion from '@/components/ScreenTypes/SingleChoiceQuestion';
-import { selectResponses } from '@/lib/features/survey/surveySelectors';
-import { saveResponse } from '@/lib/features/survey/surveySlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import ScreenType from '@/components/ScreenTypes/ScreenType';
+import questionnaireData from '@/configs/questionnaire.json';
 import styles from '@/styles/pages/Question.module.scss';
-import { Answer, Params } from '@/types/questionnaire';
-import { validateQuestionnaire } from '@/utils/validateQuestionnaire';
+import { Params, Question } from '@/types/questionnaire';
 
-export default function QuestionPage({ params }: { params: Params }) {
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const responses = useAppSelector(selectResponses);
-  const questionnaire = validateQuestionnaire();
-
-  const question = questionnaire.questions.find(
+export default function ScreenTypePage({ params }: { params: Params }) {
+  const question = questionnaireData.questions.find(
     (q) => q.id === params.questionId,
-  );
+  ) as Question;
 
   if (!question) {
-    console.warn(`Question not found for ID: ${params.questionId}`);
-    router.replace('/q1');
-    return null;
+    return <div>Question not found</div>;
   }
-
-  const handleSingleChoiceResponse = (answer: Answer) => {
-    dispatch(saveResponse(answer));
-  };
-  const lastResponse = responses.at(-1);
-
-  const renderScreen = () => {
-    switch (question.screenType) {
-      case 'singleChoice':
-        return (
-          <SingleChoiceQuestion
-            question={question}
-            onNextQuestion={handleSingleChoiceResponse}
-          />
-        );
-      case 'info':
-        return (
-          <InformationalScreen
-            question={question}
-            referenceID={lastResponse?.reference}
-          />
-        );
-      default:
-        console.warn('Invalid screenType');
-        return null;
-    }
-  };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.container}>{renderScreen()}</div>
+      <div className={styles.container}>
+        <ScreenType question={question} />
+      </div>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  return questionnaireData.questions.map((question) => ({
+    questionId: question.id,
+  }));
 }

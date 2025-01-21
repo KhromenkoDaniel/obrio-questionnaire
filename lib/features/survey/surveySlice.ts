@@ -30,11 +30,20 @@ const surveySlice = createSlice({
         state.responses.push({ id, name, reference });
       }
 
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('responses', JSON.stringify(state.responses));
+      }
+
       if (name === 'Male' || name === 'Female') {
         state.dynamicValues['Gender'] = name;
       }
     },
-    clearSurvey: () => initialState,
+    clearSurvey: (state) => {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('responses');
+      }
+      return initialState;
+    },
   },
 });
 
