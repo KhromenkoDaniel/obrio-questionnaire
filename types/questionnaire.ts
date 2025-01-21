@@ -29,7 +29,12 @@ export type Params = {
   questionId: string;
 };
 
-export type QuestionRendererProps = {
+export type SingleChoiceQuestionProps = {
   question: Question;
   onNextQuestion: (answer: Answer) => void;
+};
+
+export type InformationalScreenProps = {
+  question: Question;
+  referenceID?: string | null;
 };

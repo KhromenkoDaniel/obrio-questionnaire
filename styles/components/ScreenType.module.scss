@@ -1,21 +1,6 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-.wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100vh;
-  transition: background 0.3s ease-in-out;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 330px;
-}
-
 .title {
   font-size: 24px;
   font-weight: bold;
@@ -96,12 +81,11 @@
   &:active {
     box-shadow: 2px 2px 8px rgba(84, 60, 151, 0.5);
     background: $gradient-color;
-    // turn off the hover effect on active state
     &::before {
       transform: scaleX(0);
     }
     span {
-      color: #fbfbff; // Ensure text stays white on active
+      color: #fbfbff;
     }
   }
 }
