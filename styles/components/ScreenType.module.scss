@@ -116,7 +116,7 @@
 .answersList {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 60vh;
   width: 100%;
   padding: 20px;
