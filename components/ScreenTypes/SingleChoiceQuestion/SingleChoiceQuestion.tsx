@@ -11,6 +11,12 @@ function SingleChoiceQuestion({ question }: SingleChoiceQuestionProps) {
   const dispatch = useAppDispatch();
   const responses = useAppSelector(selectResponses);
 
+  const isActive = (answerId: number) =>
+    responses.some(
+      (response) =>
+        response.questionId === question.id && response.id === answerId,
+    );
+
   const processedQuestion = replacePlaceholders(
     question.question,
     question.placeholders || {},
@@ -18,7 +24,14 @@ function SingleChoiceQuestion({ question }: SingleChoiceQuestionProps) {
   );
 
   const handleSingleChoiceResponse = (answer: Response) => {
-    dispatch(saveResponse(answer));
+    dispatch(
+      saveResponse({
+        questionId: question.id,
+        id: answer.id,
+        name: answer.name,
+        reference: answer.reference,
+      }),
+    );
   };
 
   return (
@@ -30,7 +43,7 @@ function SingleChoiceQuestion({ question }: SingleChoiceQuestionProps) {
           <Link
             href={`${question.nextScreenId || answer.reference}`}
             key={answer.id}
-            className={styles.button}
+            className={`${styles.button} ${isActive(answer.id) ? styles.active : ''}`}
             onClick={() => handleSingleChoiceResponse(answer)}
           >
             <span>{answer.name}</span>
