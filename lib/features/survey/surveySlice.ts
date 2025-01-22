@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Response = {
+  questionId: string;
   id: number;
   name: string;
   reference: string | null;
@@ -19,18 +20,20 @@ const surveySlice = createSlice({
   initialState,
   reducers: {
     saveResponse: (state, action: PayloadAction<Response>) => {
-      const { id, name, reference } = action.payload;
+      const { questionId, id, name, reference } = action.payload;
 
-      const existingIndex = state.responses.findIndex((res) => res.id === id);
+      const existingIndex = state.responses.findIndex(
+        (res) => res.questionId === questionId,
+      );
+
       if (existingIndex > -1) {
-        state.responses[existingIndex] = { id, name, reference };
+        state.responses[existingIndex] = { questionId, id, name, reference };
       } else {
-        state.responses.push({ id, name, reference });
+        state.responses.push({ questionId, id, name, reference });
       }
     },
     clearSurvey: (state) => {
       state.responses = [];
-      return initialState;
     },
   },
 });

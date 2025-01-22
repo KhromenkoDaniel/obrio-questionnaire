@@ -88,7 +88,22 @@
       color: #fbfbff;
     }
   }
+  
+  &.active {
+    background: $gradient-color;
+    box-shadow: 4px 4px 10px rgba(84, 60, 151, 0.5);
+    color: #fbfbff;
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    span {
+      color: #fbfbff;
+    }
+  }
 }
+
 
 .defaultColor {
   color: $default-font-color;
